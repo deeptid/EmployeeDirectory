@@ -1,0 +1,64 @@
+  <nav class="navbar navbar-default  navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Employee List</a>
+    </div>
+  </div>
+</nav>
+
+<div class="row add_top_padding">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="box box-primary">
+      <div class="box-header ui-sortable-handle">
+        <i class="fa fa-tasks"></i>
+        <h2 class="box-title"><b>List</b></h2>
+      </div>
+      <div class="box-body" id="todo_list_box">
+        <ul class="todo-list ui-sortable table-condensed">
+        <p id="notice"><%= notice %></p>
+
+<table class="col table">
+  <thead>
+    <tr class="row td">
+      <th>Employee Name</th>
+      <th>Title</th>
+      <th>Manager</th>
+      <th>Work phone</th>
+      <th>Personal email</th>
+      <th>Date of birth</th>
+      <th>Department</th>
+      <th>Status</th>
+      <th>Phone</th>
+      <th>Work email</th>
+      <th>Gender</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr class="row td">
+        <td><%= link_to  employee.first_name + " " + employee.last_name , employee %></td>
+        <td><%= employee.title %></td>
+        <td><%= employee.manager %></td>
+        <td><%= employee.work_phone %></td>
+        <td><%= employee.personal_email %></td>
+        <td><%= employee.date_of_birth %></td>
+        <td><%= employee.department_url %></td>
+        <td><%= employee.status %></td>
+        <td><%= employee.personal_phone %></td>
+        <td><%= employee.work_email %></td>
+        <td><%= employee.gender %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+

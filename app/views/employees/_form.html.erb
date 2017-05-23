@@ -1,0 +1,92 @@
+<%= form_with(model: employee, local: true) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.number_field :employee_id, id: :employee_employee_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred_name %>
+    <%= form.text_field :preferred_name, id: :employee_preferred_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :employee_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_phone %>
+    <%= form.text_field :work_phone, id: :employee_work_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :personal_email %>
+    <%= form.text_field :personal_email, id: :employee_personal_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %>
+    <%= form.text_field :date_of_birth, id: :employee_date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_url %>
+    <%= form.text_field :department_url, id: :employee_department_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :employee_type %>
+    <%= form.text_field :employee_type, id: :employee_employee_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :employee_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subordinates_url %>
+    <%= form.text_field :subordinates_url, id: :employee_subordinates_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photo_thumbnail_url %>
+    <%= form.text_field :photo_thumbnail_url, id: :employee_photo_thumbnail_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :personal_phone %>
+    <%= form.text_field :personal_phone, id: :employee_personal_phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :work_email %>
+    <%= form.text_field :work_email, id: :employee_work_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender, id: :employee_gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :manager %>
+    <%= form.text_field :manager, id: :employee_manager %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

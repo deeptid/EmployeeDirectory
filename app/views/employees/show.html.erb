@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @employee.employee_id %>
+</p>
+
+<p>
+  <strong>Preferred name:</strong>
+  <%= @employee.preferred_name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @employee.title %>
+</p>
+
+<p>
+  <strong>Work phone:</strong>
+  <%= @employee.work_phone %>
+</p>
+
+<p>
+  <strong>Personal email:</strong>
+  <%= @employee.personal_email %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @employee.date_of_birth %>
+</p>
+
+<p>
+  <strong>Department url:</strong>
+  <%= @employee.department_url %>
+</p>
+
+<p>
+  <strong>Employee type:</strong>
+  <%= @employee.employee_type %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @employee.status %>
+</p>
+
+<p>
+  <strong>Subordinates url:</strong>
+  <%= @employee.subordinates_url %>
+</p>
+
+<p>
+  <strong>Photo thumbnail url:</strong>
+  <%= @employee.photo_thumbnail_url %>
+</p>
+
+<p>
+  <strong>Personal phone:</strong>
+  <%= @employee.personal_phone %>
+</p>
+
+<p>
+  <strong>Work email:</strong>
+  <%= @employee.work_email %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @employee.gender %>
+</p>
+
+<p>
+  <strong>Manager:</strong>
+  <%= @employee.manager %>
+</p>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

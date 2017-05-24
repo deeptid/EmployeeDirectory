@@ -9,6 +9,8 @@ class EmployeesController < ApplicationController
       @employees = Employee.search(params[:search]).order("created_at DESC")
     else
        @employees = Employee.all
+       puts "Admin Email:"
+       puts @admin_email
   end
   end
 

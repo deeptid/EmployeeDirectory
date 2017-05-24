@@ -4,10 +4,11 @@ class ApplicationController < ActionController::Base
 
   def ensure_success
   	if session[:is_db_initialized] == nil
-  		init_employee_db
-  		session[:is_db_initialized] = true
+      session[:is_db_initialized] = true  
+  		Thread.start {init_employee_db}
     end
   end
+
 
   def init_employee_db
       Employee.delete_all
@@ -20,6 +21,11 @@ class ApplicationController < ActionController::Base
       	 data = json['data']
       	 puts data['data'].length
       	 data['data'].each do |v|
+
+          if v['type'] == "admin"
+            is_admin = true
+            @admin_email = v['work_email']
+          end
       	 	dep = v['department']
       	 	unless dep['url'].nil?
       	 		dep_url = HTTParty.get dep['url'], headers: { "Authorization" => auth} 
@@ -45,8 +51,11 @@ class ApplicationController < ActionController::Base
       	 	
       	 	company = v['company']
       	 	employments = v['employments']
-      	 	Employee.create(employee_id: v['id'], first_name: v['first_name'], last_name: v['last_name'], preferred_name: v['preferred_name'] , work_phone: v['work_phone'] , personal_email: v['personal_email'], date_of_birth: v['date_of_birth'], department_url: dep_name['name'], employee_type: v['type'], status: v['status'], subordinates_url: sub_name['name'], photo_thumbnail_url: v['photo_thumbnail_url'], personal_phone: v['personal_phone'], work_email: v['work_email'], gender: v['gender'], manager: manager_name['name'])
-      	 end	
+          if !is_admin
+              Employee.create(employee_id: v['id'], first_name: v['first_name'], last_name: v['last_name'], preferred_name: v['preferred_name'] , work_phone: v['work_phone'] , personal_email: v['personal_email'], date_of_birth: v['date_of_birth'], department_url: dep_name['name'], employee_type: v['type'], status: v['status'], subordinates_url: sub_name['name'], photo_thumbnail_url: v['photo_thumbnail_url'], personal_phone: v['personal_phone'], work_email: v['work_email'], gender: v['gender'], manager: "#{manager_name['first_name']} #{manager_name['last_name']}")
+          end
+
+      	 end
       end
   end
 end

@@ -14,9 +14,34 @@
   padding-left: 5vw;
 }
 
+.container-2{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+
+.search {
+    position: relative;
+    span {
+        position: absolute;
+        display:inline-block;
+        padding-left:.5rem;
+        padding-top: .5rem;
+    }
+    input {
+        padding: .5rem;
+        padding-left: 2rem;
+        border-radius: 25px;
+
+    }
+}
+
 #new_task_btn_top_padding {
   padding-top: 2vh;
 }
+
+
 
 #todo_list_box {
   overflow-y: scroll;

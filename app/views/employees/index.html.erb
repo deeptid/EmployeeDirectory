@@ -1,7 +1,7 @@
   <nav class="navbar navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Employee List</a>
+      <a class="navbar-brand" href="/employees">Employee List</a>
     </div>
   </div>
 </nav>
@@ -10,12 +10,21 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="box box-primary">
       <div class="box-header ui-sortable-handle">
-        <i class="fa fa-tasks"></i>
-        <h2 class="box-title"><b>List</b></h2>
+      <div class="nav navbar-default ">
+      <div class="container-2">
+           <%= form_tag(employees_path, :method => "get", id: "search-form") do %>
+           <%= text_field_tag :search, params[:search], placeholder: "Search" , class: 'search'%>
+           <% end %>   
+    </div>
+    </div>
+
       </div>
       <div class="box-body" id="todo_list_box">
         <ul class="todo-list ui-sortable table-condensed">
         <p id="notice"><%= notice %></p>
+        <% if @employees.blank? %>
+         <h4>There are no employees containing the term <%= params[:search] %>.</h4>
+         <% end %>
 
 <table class="col table">
   <thead>

@@ -16,6 +16,10 @@ class CreateEmployees < ActiveRecord::Migration[5.1]
       t.string :work_email
       t.string :gender
       t.string :manager
+      t.string :salary
+      t.string :location
+      t.string :first_name
+      t.string :last_name
 
       t.timestamps
     end

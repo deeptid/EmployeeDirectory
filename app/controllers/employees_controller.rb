@@ -5,12 +5,14 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     # @employees = Employee.all
-    if params[:search]
-      @employees = Employee.search(params[:search]).order("created_at DESC")
+    # params[:admin_email] = Setting.admin_email
+    if params[:search] 
+      @employees = Employee.search(params[:search]).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
     else
-       @employees = Employee.all
+       @employees = Employee.all.paginate(:per_page => 10, :page => params[:page])
+
        puts "Admin Email:"
-       puts @admin_email
+       puts params[:admin_email]
   end
   end
 
@@ -76,6 +78,24 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:employee_id, :first_name, :last_name, :preferred_name, :title, :work_phone, :personal_email, :date_of_birth, :department_url, :employee_type, :status, :subordinates_url, :photo_thumbnail_url, :personal_phone, :work_email, :gender, :manager)
+      params.require(:employee).permit(:employee_id, 
+                                       :first_name, 
+                                       :last_name, 
+                                       :preferred_name, 
+                                       :title, 
+                                       :work_phone, 
+                                       :personal_email, 
+                                       :date_of_birth, 
+                                       :department_url, 
+                                       :employee_type, 
+                                       :status, 
+                                       :subordinates_url, 
+                                       :photo_thumbnail_url, 
+                                       :personal_phone, 
+                                       :work_email, 
+                                       :gender, 
+                                       :manager, 
+                                       :salary, 
+                                       :location)
     end
 end

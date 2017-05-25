@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :search_suggestions
   resources :employees
   # get 'welcome/index'
   resources :welcome 

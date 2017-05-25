@@ -6,7 +6,7 @@
      <div>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#"> <span class="glyphicon glyphicon-user add_right_margin"></span>Hello, <%= params[:admin_email] %></a>
+          <a href="#"> <span class="glyphicon glyphicon-user add_right_margin"></span>Hello, <%= params[:admin_email] %> </a>
         </li>
       </ul>
     </div>
@@ -19,15 +19,11 @@
       <div class="box-header ui-sortable-handle">
       <div class="nav navbar-nav">
       <div class="container-2">
-           <%= form_tag(employees_path, :method => "get", id: "search-form") do %>
+           <%= form_tag(employees_path, :method => "get", id: "search-form", remote: true) do %>
            <%= text_field_tag :search, params[:search], placeholder: "Search Employee" , class: 'form-control'%>
            <% end %>   
-
-
-
     </div>
     </div>
-
       </div>
       <div class="box-body" id="todo_list_box">
         <ul class="todo-list ui-sortable table-condensed">
@@ -36,43 +32,7 @@
          <h4>There are no employees containing the term <%= params[:search] %>.</h4>
          <% end %>
 
-<table class="col table">
-  <thead>
-    <tr class="row td">
-      <th>Employee Name</th>
-      <th>Title</th>
-      <th>Manager</th>
-      <th>Work phone</th>
-      <th>Personal email</th>
-      <th>Date of birth</th>
-      <th>Department</th>
-      <th>Status</th>
-      <th>Phone</th>
-      <th>Work email</th>
-      <th>Gender</th>
-      
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @employees.each do |employee| %>
-      <tr class="row td">
-        <td><%= link_to  employee.first_name + " " + employee.last_name , employee %></td>
-        <td><%= employee.title %></td>
-        <td><%= employee.manager %></td>
-        <td><%= employee.work_phone %></td>
-        <td><%= employee.personal_email %></td>
-        <td><%= employee.date_of_birth %></td>
-        <td><%= employee.department_url %></td>
-        <td><%= employee.status %></td>
-        <td><%= employee.personal_phone %></td>
-        <td><%= employee.work_email %></td>
-        <td><%= employee.gender %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div id="employees_table"><%= render 'employees_table' %></div>
 <br>
 
 </ul>

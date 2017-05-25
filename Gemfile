@@ -33,8 +33,19 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap-sass'
-gem 'httparty'
+# Sass-powered version of Bootstrap
+gem 'bootstrap-sass', '3.3.7'
+
+# for restful web services
+gem 'httparty', '0.15.5'
+
+# javascript gem
+gem 'jquery-rails', '4.3.1'
+gem 'jquery-ui-rails', '6.0.1'
+# mysql db
+gem 'mysql2', '0.4.6'
+# pagination gem
+gem 'will_paginate', '3.0.12'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

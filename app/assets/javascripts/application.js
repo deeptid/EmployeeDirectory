@@ -10,25 +10,16 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery-ui
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 
-.alert {
-    top: 10px;
-    position: absolute;
-    width: 40%;
-    left: 30%;
-    z-index: 10000;
-    text-align: center;
-}
 
-.hidden {
-    display: none;
-}
-
-
-body {
-    background-image: url("/img/home2.png");
-    background-attachment: fixed;
-}
+$(function() {
+	$("#search-form input").keyup(function(){
+		$.get($("#search-form").attr("action"), $("#search-form").serialize(), null, "script");
+		return false;
+	});
+});

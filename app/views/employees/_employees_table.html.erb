@@ -1,0 +1,41 @@
+<table class="col table">
+  <thead>
+    <tr class="row td">
+      <th>Employee Name</th>
+      <th>Title</th>
+      <th>Manager</th>
+      <th>Location</th>
+      <th>Salary</th>
+      <th>Work phone</th>
+      <th>Personal email</th>
+      <th>Date of birth</th>
+      <th>Department</th>
+      <th>Status</th>
+      <th>Phone</th>
+      <th>Work email</th>
+      <th>Gender</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr class="row td">
+        <td><%= link_to  employee.first_name + " " + employee.last_name , employee %></td>
+        <td><%= employee.title %></td>
+        <td><%= employee.manager %></td>
+        <td><%= employee.location %></td>
+        <td><%= "$" + employee.salary %></td>
+        <td><%= employee.work_phone %></td>
+        <td><%= employee.personal_email %></td>
+        <td><%= employee.date_of_birth %></td>
+        <td><%= employee.department_url %></td>
+        <td><%= employee.status %></td>
+        <td><%= employee.personal_phone %></td>
+        <td><%= employee.work_email %></td>
+        <td><%= employee.gender %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @employees %>

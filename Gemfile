@@ -42,6 +42,8 @@ gem 'httparty', '0.15.5'
 # javascript gem
 gem 'jquery-rails', '4.3.1'
 gem 'jquery-ui-rails', '6.0.1'
+
+gem 'js-routes'
 # mysql db
 gem 'mysql2', '0.4.6'
 # pagination gem
@@ -50,6 +52,8 @@ gem 'will_paginate', '3.0.12'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'

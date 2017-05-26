@@ -1,43 +1,43 @@
-  <nav class="navbar navbar-default  navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/employees">Employee List</a>
+<nav class="navbar navbar-default  navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/employees">Employee List</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="#"> <span class="glyphicon glyphicon-user add_right_margin"></span>Hello, <%= params[:admin_email] %> </a>
+              </li>
+            </ul>
+        </div>
     </div>
-     <div>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#"> <span class="glyphicon glyphicon-user add_right_margin"></span>Hello, <%= params[:admin_email] %> </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </nav>
 
 <div class="row add_top_padding">
   <div class="col-md-10 col-md-offset-1">
     <div class="box box-primary">
       <div class="box-header ui-sortable-handle">
-      <div class="nav navbar-nav">
-      <div class="container-2">
-           <%= form_tag(employees_path, :method => "get", id: "search-form", remote: true) do %>
-           <%= text_field_tag :search, params[:search], placeholder: "Search Employee" , class: 'form-control'%>
-           <% end %>   
-    </div>
-    </div>
+        <div class="nav navbar-nav">
+            <div class="container-2">
+              <%= form_tag(employees_path, :method => "get", id: "search-form", remote: true) do %>
+                  <%= text_field_tag :search, params[:search], placeholder: "Search Employee" , class: 'form-control'%>
+              <% end %>   
+            </div>
+        </div>
       </div>
       <div class="box-body" id="todo_list_box">
-        <ul class="todo-list ui-sortable table-condensed">
-        <p id="notice"><%= notice %></p>
-        <% if @employees.blank? %>
-         <h4>There are no employees containing the term <%= params[:search] %>.</h4>
-         <% end %>
-
-<div id="employees_table"><%= render 'employees_table' %></div>
-<br>
-
-</ul>
-</div>
-</div>
-</div>
+          <ul class="todo-list ui-sortable table-condensed">
+          <p id="notice"><%= notice %></p>
+          <% if @employees.blank? %>
+             <h4>There are no employees containing the term <%= params[:search] %>.</h4>
+          <% end %>
+          <div id="employees_table">
+              <%= render 'employees_table' %>
+          </div>
+          <br>
+          </ul>
+      </div>
+    </div>
+  </div>
 </div>
 

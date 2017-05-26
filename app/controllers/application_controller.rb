@@ -1,16 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :ensure_success
-  
- 
-
 
   def ensure_success
-  	if session[:is_db_initialized] == nil
-       # init_employee_db
-       session[:is_db_initialized] = true  
-       Thread.start {init_employee_db}
-    end
+    	if session[:is_db_initialized] == nil
+         session[:is_db_initialized] = true  
+         Thread.start {init_employee_db}
+      end
   end
 
 
@@ -22,16 +18,19 @@ class ApplicationController < ActionController::Base
       json = JSON.parse(r.body)
       data = json['data']
       #As I have removed Admin from the list
-      # if Employee.count !=  data['data'].length - 1 
+      if Employee.count !=  data['data'].length - 1 
           if json['status'] == 200
-             Employee.delete_all
+              Employee.delete_all
 
-          	 puts data['data'].length
-          	 data['data'].each do |v|
+              puts data['data'].length
+              data['data'].each do |v|
 
               if v['type'] == "admin"
                 is_admin = true
-                params[:admin_email] = v['work_email']
+                Admin.create(employee_id: v['id'], 
+                             first_name: v['first_name'], 
+                             last_name: v['last_name'],
+                             email: v['work_email'])
               else
                 is_admin = false
               end
@@ -110,6 +109,6 @@ class ApplicationController < ActionController::Base
                 end
               end #end of each employee
             end #end of if
-          # end
+          end
   end # end of method
 end

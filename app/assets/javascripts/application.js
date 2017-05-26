@@ -12,13 +12,13 @@
 //
 //= require jquery
 //= require jquery-ui
+//= require js-routes
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
 
-
 $(function() {
-	$("#search-form input").keyup(function(){
+	$("#search-form").on('keyup' , function(){
 		$.get($("#search-form").attr("action"), $("#search-form").serialize(), null, "script");
 		return false;
 	});

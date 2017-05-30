@@ -9,7 +9,9 @@ class EmployeesController < ApplicationController
         @employees = Employee.search(params[:search]).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
       else
          @employees = Employee.all.paginate(:per_page => 10, :page => params[:page])
-      params[:admin_email] = Admin.first.email
+      end
+      if(Admin.count > 0)
+        params[:admin_email] = Admin.first.email
       end
   end
 

@@ -3,56 +3,56 @@
 #
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
-#
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-
-development:
-  <<: *default
-  database: db/development.sqlite3
-
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: db/production.sqlite3
-
-# common: &common
-#   adapter: mysql2
-#   encoding: utf8
-#   pool: 5
-#   username: root
-#   password: 
-# <% if File.exist? "/opt/local/var/run/mysql5/mysqld.sock" %>
-#   socket: /opt/local/var/run/mysql5/mysqld.sock
-# <% elsif File.exist? "/var/lib/mysql/mysql.sock" %>
-#   socket: /var/lib/mysql/mysql.sock
-# <% elsif File.exist? "/tmp/mysql.sock" %>
-#   socket: /tmp/mysql.sock
-# <% end %>
+# #
+# default: &default
+#   adapter: sqlite3
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   timeout: 5000
 
 # development:
-#   <<: *common
-#   database: employee_db_development
-
-# staging:
-#   <<: *common
-#   database: employee_db
+#   <<: *default
+#   database: db/development.sqlite3
 
 # # Warning: The database defined as "test" will be erased and
 # # re-generated from your development database when you run "rake".
 # # Do not set this db to the same as development or production.
 # test:
-#   <<: *common
-#   database: employee_db_test
+#   <<: *default
+#   database: db/test.sqlite3
 
 # production:
-#   <<: *common
-#   database: employee_db
+#   <<: *default
+#   database: db/production.sqlite3
+
+common: &common
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: 
+<% if File.exist? "/opt/local/var/run/mysql5/mysqld.sock" %>
+  socket: /opt/local/var/run/mysql5/mysqld.sock
+<% elsif File.exist? "/var/lib/mysql/mysql.sock" %>
+  socket: /var/lib/mysql/mysql.sock
+<% elsif File.exist? "/tmp/mysql.sock" %>
+  socket: /tmp/mysql.sock
+<% end %>
+
+development:
+  <<: *common
+  database: employee_db_development
+
+staging:
+  <<: *common
+  database: employee_db
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *common
+  database: employee_db_test
+
+production:
+  <<: *common
+  database: employee_db

@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170525165609) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170525165609) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "employees", force: :cascade do |t|
+  create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "employee_id"
     t.string "preferred_name"
     t.string "title"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20170525165609) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "search_suggestions", force: :cascade do |t|
+  create_table "search_suggestions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "term"
     t.integer "popularity"
     t.datetime "created_at", null: false

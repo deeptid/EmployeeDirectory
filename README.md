@@ -21,6 +21,12 @@ This project is built using the Ruby on Rails web framework.
    $ rake db:migrate
    ```
 
+* Initialize db: It'll fetch json data from uri and store it in db
+   ```bash
+   $ rake rake_employees:index
+   ```
+
+
 * Start the server.
 
    ```bash
